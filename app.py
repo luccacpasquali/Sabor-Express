@@ -56,7 +56,7 @@ def cadastrar_novo_restaurante():
     print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso')
     voltar_menu()
 
-def alternar_estado_restaurante():
+def alternar_estado_restaurante():error: failed to push some refs to 'https://github.com/luccacpasquali/Sabor-Express.git'
     print ("teste")
     
 
