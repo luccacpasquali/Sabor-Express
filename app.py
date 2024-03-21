@@ -1,6 +1,6 @@
 import os
 
-restaurantes = [{'Nome':'Praça', 'Categoria':'Japonesa','Ativo':False},
+restaurantes = [{'Nome':'Fuji', 'Categoria':'Japonesa','Ativo':False},
                 {'Nome':'Lucca', 'Categoria':'Café','Ativo':True},
                 {'Nome':'Livia\'s', 'Categoria':'Caseiro','Ativo':False}
                 ]
@@ -45,7 +45,7 @@ def listar_restaurantes():
         print(f'-{nome_restaurante} | {categoria} | {ativo}')
     voltar_menu()
 
-def cadastrar_novo_restaurante():
+def cadastrar_novo_restaurante():  
     exibir_subtitulo('Cadastro de Restaurantes')
 
     nome_do_restaurante = input('Digite o nome do restaurante que deseja cadastrar: ')
@@ -57,9 +57,32 @@ def cadastrar_novo_restaurante():
     print(f'O restaurante {nome_do_restaurante} foi cadastrado com sucesso')
     voltar_menu()
 
+#função que altera estado do restaurante
 def alternar_estado_restaurante():
-    print ("teste")
-    
+    #exibindo subtitulo
+    exibir_subtitulo('Alterando estado Restaurante')
+    #atribuindo o nome do restaurante que o usuario deseja alterar o estado
+
+    nome_restaurante  = input('Digite o nome do restaurante que deseja alterar o estado')
+    #variavel que ira testar se o restaurante digitado em nome_restaurante esta entre os cadastrados
+    restaurante_encontrado = False 
+
+    #passando por cada restaurante do dicionário restaurantes
+    for restaurante in restaurantes:
+
+        #se o nome digitado for igual a um dos restaurantes cadastrados
+        if nome_restaurante == restaurantes['Nome']:
+            restaurante_encontrado = True
+            #o restaurante escolhido recebe o oposto do valor boolean que tem
+            restaurante['Ativo'] = not restaurante['Ativo']
+            #menssagem para ativado ou desetivado, testando se o valor atual é ativo
+            mensagem = f'O restaurante {nome_restaurante} foi ativado com sucesso' if restaurante['Ativo'] else f'O restaurante {nome_restaurante} foi desativado com sucesso'
+            print(mensagem)
+        if not restaurante_encontrado:
+            #menssagem caso nenhum restaurante seja encontrado
+            print('O restaurante não foi encontrado')
+
+    voltar_menu()
 
 def voltar_menu():
     input('\nDigite qualquer tecla para voltar ao menu principal: ')
